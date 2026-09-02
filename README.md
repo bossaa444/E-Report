@@ -1,5 +1,5 @@
 # E-Report Project Knowledge Base
-
+- github: https://github.com/bossaa444/E-Report/tree/main
 ## 1. Overview
 
 This project is a Streamlit-based electronic report management system for creating, approving, editing, exporting, and printing operational records via NocoDB-backed tables.
@@ -34,8 +34,7 @@ The main application is implemented in `app.py`, with background notification lo
 ### UI / Extensions
 
 - streamlit-drawable-canvas — signature canvas
-- streamlit-searchbox — autocomplete search panel
-- st-rsuite / st-mui — specialized UI widgets
+- st-mui — time picker widget
 
 ### External systems
 
@@ -55,7 +54,6 @@ E-Report/
 ├── form_config.json             # Dynamic form config per table
 ├── comments.json                # Form instructions/comments per table
 ├── notify_state.json            # Notification reminder state
-├── run_app.bat                  # Local launcher
 └── .streamlit/                  # Streamlit settings and secrets
 ```
 
@@ -129,8 +127,8 @@ This catalog becomes the main navigation list for the application.
 Admins can use `สร้างแบบฟอร์มใหม่` to create a NocoDB table and its fields from
 the application. The builder then registers the new table in the report catalog
 and creates the initial `form_config.json` entry. Admins can delete a form from
-page 2; deletion requires confirmation and removes both the NocoDB table and
-the `ereport_catalog` entry. Add the NocoDB Base ID to
+the Reports tab; deletion requires confirmation and removes both the NocoDB table
+and the `ereport_catalog` entry. Add the NocoDB Base ID to
 `.streamlit/secrets.toml` before using it:
 
 ```toml
@@ -264,7 +262,7 @@ Typical structure:
 - table ID as key
 - `fields`: array of field configs
 - `date_autofill`: primary and secondary date behavior
-- `date_format`: output format preference
+- field-level `date_format`: output format preference for date fields
 - `qr_autofill`: QR field mapping and delimiter
 - `notify`: generic webhook reminder settings
 - `allow_edit_after_submit`: user-edit permission flag
@@ -318,20 +316,6 @@ This is useful when QR codes carry machine-readable multiple segments, such as p
 
 ---
 
-## 9. Removed Feature: Workflow / Lot Cascade
-
-The previous workflow/lot cascade feature has been removed and is no longer
-part of the active application.
-
-The current app no longer depends on:
-
-- `PANEL_ID` / `PARTNUM` / `LOT_ID` chained dropdown logic
-- admin config entries for `cascade_select`
-
-This keeps the app focused on the active report form and QR-driven entry flow.
-
----
-
 ## 10. Notification Daemon (`notifier.py`)
 
 `notifier.py` is a separate background process that watches form configs for reminder rules.
@@ -376,7 +360,7 @@ The active deployment uses local services configured in `.streamlit/secrets.toml
 - NocoDB Base ID: required for creating tables from Builder
 
 The app creates `ereport_catalog` automatically in MySQL. It is the report
-index used by both the Builder and page 2.
+index used by both the Form Builder and the Reports tab.
 
 ---
 
@@ -497,4 +481,4 @@ This project is a dynamic, schema-driven electronic reporting system built on St
 
 ## 17. GitHub-Ready Project Description
 
-> E-Report is a Streamlit-based electronic reporting and approval platform for operational departments. It dynamically generates forms from NocoDB schemas, supports QR auto-fill, signature approval, record editing, PDF/Excel export, and browser-based reminder notifications via generic webhooks. The system uses MySQL for report catalog metadata.
+> E-Report is a Streamlit-based electronic reporting and approval platform for operational departments. It dynamically generates forms from NocoDB schemas, supports QR auto-fill, signature approval, record editing, PDF/Excel export, and automated reminder notifications via generic webhooks. The system uses MySQL for report catalog metadata.
