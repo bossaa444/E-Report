@@ -1,5 +1,7 @@
 # E-Report Project Knowledge Base
-- github: https://github.com/bossaa444/E-Report/tree/main
+- WEB APP DEMO : https://are-leave-tony-buzz.trycloudflare.com/
+## Log-in to use ADMIN ROLE FRIST!!
+- PASSWORD : admin1234
 ## 1. Overview
 
 This project is a Streamlit-based electronic report management system for creating, approving, editing, exporting, and printing operational records via NocoDB-backed tables.
