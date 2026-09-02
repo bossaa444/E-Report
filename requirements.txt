@@ -1,0 +1,11 @@
+streamlit
+pandas
+pymysql
+requests
+streamlit-drawable-canvas
+Pillow
+reportlab
+python-dateutil
+st-rsuite
+st-mui
+openpyxl

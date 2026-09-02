@@ -1,0 +1,17 @@
+# Local secrets and credentials
+.streamlit/secrets.toml
+.env
+.env.*
+!.env.example
+
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Local runtime state
+notify_state.json
+
+# IDE and OS files
+.vscode/
+.DS_Store
+Thumbs.db
